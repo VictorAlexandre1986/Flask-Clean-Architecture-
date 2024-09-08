@@ -16,8 +16,8 @@ def get_user_by_id(user_id):
 
 @api_routes.route('/users', methods=['GET'])
 def get_all_users():
-    # return user_controller.get_all_users()
-    return jsonify({"users": []})
+    return user_controller.get_all_users()
+   
 
 @api_routes.route('/users/<int:user_id>', methods=['PUT'])
 def update_user(user_id):
