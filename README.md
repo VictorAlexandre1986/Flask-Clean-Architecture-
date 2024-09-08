@@ -41,6 +41,16 @@ flask db migrate -m "Initial migration"
 flask db upgrade
 ```
 
+## Verificar o status da migração
+```
+flask db status
+```
+
+## Reverter a migração
+```
+flask db downgrade
+```
+
 ## Para rodar o app digite :
 ```
 flask run
