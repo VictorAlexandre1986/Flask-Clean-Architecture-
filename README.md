@@ -11,6 +11,8 @@
   <li>SQLite></li>
 </ul>
 
+## Obs: Não use o alembic para migrar o banco de dados, use o flask-migrate.
+
 ## Para criar um ambiente virtual digite:
 ```
 python -m venv venv
