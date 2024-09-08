@@ -8,6 +8,7 @@
   <li>Pydantic</li>
   <li>Flask-Migrate</li>
   <li>Swagger</li>
+  <li>SQLite></li>
 </ul>
 
 ## Para criar um ambiente virtual digite:
