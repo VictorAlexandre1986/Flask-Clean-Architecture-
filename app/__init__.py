@@ -20,7 +20,7 @@ def create_app():
     
     db1.init_app(app)
 
-    migrate.init_app(app, db)
+    migrate.init_app(app, db1)
     
     # Swagger configuration
     SWAGGER_URL = '/swagger'

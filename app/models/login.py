@@ -7,10 +7,10 @@ def get_db():
 class LoginUser(get_db().Model):
     __tablename__ = 'login_user'
 
-    id = Column(Integer, primary_key=True)
-    username = Column(String(50), nullable=False, unique=True)
-    password = Column(String(50), nullable=False, unique=True)
-    email = Column(String(100), unique=True, nullable=False)
+    id = get_db().Column(get_db().Integer, primary_key=True)
+    username = get_db().Column(get_db().String(50), nullable=False, unique=True)
+    password = get_db().Column(get_db().String(50), nullable=False, unique=True)
+    email = get_db().Column(get_db().String(100), unique=True, nullable=False)
     user = get_db().relationship('User', backref='login_user', uselist=False)    # Relacionamento com User (uselist=False garante relacionamento um-para-um)
 
     def __init__(self, username, password, email):

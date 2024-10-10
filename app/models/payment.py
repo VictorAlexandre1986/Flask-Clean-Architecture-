@@ -9,14 +9,14 @@ def get_db():
 class Payment(get_db().Model):
     __tablename__ = 'payment'
 
-    id = Column(Integer, primary_key=True)
-    id_enterprise = Column(Integer, get_db().ForeignKey('enterprise.id'), nullable=False)
-    date = Column(DateTime, nullable=False)
-    amount = Column(Float, nullable=False)
-    type_payment = Column(String(50), nullable=False) # Credito, Debito
-    status_payment = Column(String(50), nullable=False) # Pendente, Pago, Cancelado
-    transaction_id = Column(String(50), nullable=False, unique=True) # Recebe do stripe
-    status_refund = Column(String(50), nullable=False) # Reembolso total, Nao Reembolso, Reembolso Parcial
+    id = get_db().Column(get_db().Integer, primary_key=True)
+    id_enterprise = get_db().Column(get_db().Integer, get_db().ForeignKey('enterprise.id'), nullable=False)
+    date = get_db().Column(get_db().DateTime, nullable=False)
+    amount = get_db().Column(get_db().Float, nullable=False)
+    type_payment = get_db().Column(get_db().String(50), nullable=False) # Credito, Debito
+    status_payment = get_db().Column(get_db().String(50), nullable=False) # Pendente, Pago, Cancelado
+    transaction_id = get_db().Column(get_db().String(50), nullable=False, unique=True) # Recebe do stripe
+    status_refund = get_db().Column(get_db().String(50), nullable=False) # Reembolso total, Nao Reembolso, Reembolso Parcial
         # Relacionamento com Login
     enterprise = relationship(Enterprise, backref='user')
 

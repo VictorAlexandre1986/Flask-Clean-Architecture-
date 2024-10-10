@@ -34,6 +34,7 @@ pip install -r requirements.txt
 ```
 
 ## Depois de instalado as dependencias , caso fala uma alteração no model digite:
+##obs: flask_migrate só funciona com flask_sqlalchemy
 ```
 flask db init
 ```
