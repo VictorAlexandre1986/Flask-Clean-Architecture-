@@ -11,7 +11,7 @@ class LoginUser(get_db().Model):
     username = get_db().Column(get_db().String(50), nullable=False, unique=True)
     password = get_db().Column(get_db().String(50), nullable=False, unique=True)
     email = get_db().Column(get_db().String(100), unique=True, nullable=False)
-    user = get_db().relationship('User', backref='login_user', uselist=False)    # Relacionamento com User (uselist=False garante relacionamento um-para-um)
+    user = get_db().relationship('User', uselist=False)    # Relacionamento com User (uselist=False garante relacionamento um-para-um)
 
     def __init__(self, username, password, email):
         self.username = username

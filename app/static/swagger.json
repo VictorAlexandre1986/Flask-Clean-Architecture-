@@ -1,131 +1,276 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "API de Usuários",
-      "description": "API para gerenciamento de usuários"
-    },
-    "host": "localhost:5000",
-    "basePath": "/",
-    "schemes": ["http"],
-    "paths": {
-      "/users": {
-        "get": {
-          "summary": "Obter todos os usuários",
-          "responses": {
-            "200": {
-              "description": "Lista de usuários",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/User"
-                }
-              }
-            }
-          }
-        },
-        "post": {
-          "summary": "Criar um novo usuário",
-          "parameters": [
-            {
-              "in": "body",
-              "name": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Usuário criado",
-              "schema": {
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API Ponto Fácil",
+    "description": "API para gerenciamento de pontos de entrada e saída de empresas, com controle de acesso e gerenciamento da de usuários"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Cliente"],
+        "summary": "Obter todos os usuários",
+        "responses": {
+          "200": {
+            "description": "Lista de usuários",
+            "schema": {
+              "type": "array",
+              "items": {
                 "$ref": "#/definitions/User"
               }
             }
           }
         }
       },
-      "/users/{id}": {
-        "get": {
-          "summary": "Obter usuário por ID",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "type": "integer"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Usuário retornado",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
+      "post": {
+        "tags": ["Cliente"],
+        "summary": "Criar um novo usuário",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
             }
           }
-        },
-        "put": {
-          "summary": "Atualizar usuário",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "type": "integer"
-            },
-            {
-              "in": "body",
-              "name": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Usuário atualizado",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        },
-        "delete": {
-          "summary": "Deletar usuário",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "type": "integer"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Usuário deletado"
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário criado",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
           }
         }
       }
     },
-    "definitions": {
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
+    "/users/{id}": {
+      "get": {
+        "tags": ["Cliente"],
+        "summary": "Obter usuário por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário retornado",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Cliente"],
+        "summary": "Atualizar usuário",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
             "type": "integer"
           },
-          "name": {
-            "type": "string"
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário atualizado",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Cliente"],
+        "summary": "Deletar usuário",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário deletado"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Login"],
+        "summary": "Cria um novo login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login criado com sucesso",
+            "schema": {
+              "$ref": "#/definitions/LoginUser"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Login"],
+        "summary": "Obtém todos os logins",
+        "responses": {
+          "200": {
+            "description": "Lista de logins",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LoginUser"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login/{id}": {
+      "get": {
+        "tags": ["Login"],
+        "summary": "Obtém um login pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detalhes do login",
+            "schema": {
+              "$ref": "#/definitions/LoginUser"
+            }
           },
-          "email": {
-            "type": "string"
+          "404": {
+            "description": "Login não encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Login"],
+        "summary": "Atualiza um login pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login atualizado com sucesso",
+            "schema": {
+              "$ref": "#/definitions/LoginUser"
+            }
+          },
+          "404": {
+            "description": "Login não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Login"],
+        "summary": "Deleta um login pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login deletado com sucesso"
+          },
+          "404": {
+            "description": "Login não encontrado"
           }
         }
       }
     }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "id_login": {
+          "type": "integer"
+        }
+      }
+    },
+    "LoginUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    }
   }
-  
+}

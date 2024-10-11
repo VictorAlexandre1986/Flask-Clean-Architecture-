@@ -4,7 +4,7 @@ from app.models.user import User,get_db
 class UserRepository:
     def create(self, user_data):
         db = get_db()
-        user = User(name=user_data.name, email=user_data.email)
+        user = User(name=user_data.name, email=user_data.email, photo=user_data.photo, phoneNumber=user_data.phoneNumber, id_login=user_data.id_login)
         db.session.add(user)
         db.session.commit()
         return user
@@ -21,6 +21,9 @@ class UserRepository:
         if user:
             user.name = user_data.name
             user.email = user_data.email
+            user.photo = user_data.photo
+            user.phoneNumber = user_data.phoneNumber
+            user.id_login = user_data.id_login
             db.session.commit()
         return user
     

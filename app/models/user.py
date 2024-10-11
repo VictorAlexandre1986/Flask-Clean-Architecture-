@@ -20,7 +20,7 @@ class User(get_db().Model):
     id_login = get_db().Column(get_db().Integer, get_db().ForeignKey('login_user.id'), nullable=False)
 
     # Relacionamento com LoginUser
-    login = get_db().relationship('LoginUser', backref='user')
+    # login = get_db().relationship('LoginUser', backref='user')
 
     def __init__(self, name, email, photo, phoneNumber, id_login):
         self.name = name
