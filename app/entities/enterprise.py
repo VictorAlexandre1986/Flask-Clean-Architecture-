@@ -14,4 +14,4 @@ class EnterpriseEntity(BaseModel):
     complement: str
     cnpj: str
     status: bool
-    id_user: int | None
+ 

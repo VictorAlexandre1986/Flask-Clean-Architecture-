@@ -23,14 +23,11 @@ class Enterprise(get_db().Model):
     cnpj = get_db().Column(get_db().String(14), unique=True, nullable=False)
     status = get_db().Column(get_db().Boolean, nullable=False)
     id_login = get_db().Column(get_db().Integer, get_db().ForeignKey('login_enterprise.id'), nullable=False)
-    id_user = get_db().Column(get_db().Integer, get_db().ForeignKey('user.id'), nullable=False)
 
-            # Relacionamento com Login
-    user = relationship(User, backref='user')
         # Relacionamento com Login
-    login = relationship(LoginEnterprise, backref='user')
+    login = relationship(LoginEnterprise, backref='enterprise',uselist=False)
 
-    def __init__(self, name, email, phoneNumber, id_login, id_user, address, city, state, cep, number, complement, cnpj):
+    def __init__(self, name, email, phoneNumber, id_login, address, city, state, cep, number, complement, cnpj, status):
         self.name = name
         self.email = email
         self.phoneNumber = phoneNumber
@@ -41,8 +38,8 @@ class Enterprise(get_db().Model):
         self.number = number
         self.complement = complement
         self.cnpj = cnpj
+        self.status = status
         self.id_login = id_login
-        self.id_user = id_user
 
     def __repr__(self):
         return f'<User {self.name}>'

@@ -115,6 +115,112 @@
         }
       }
     },
+    "/loginenterprise": {
+      "get": {
+        "tags": ["login enterprises"],
+        "summary": "Obter todos os logins",
+        "responses": {
+          "200": {
+            "description": "Lista de logins",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LoginEnterprise"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["login enterprises"],
+        "summary": "Criar um novo login enterprise",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginEnterprise"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário criado",
+            "schema": {
+              "$ref": "#/definitions/LoginEnterprise"
+            }
+          }
+        }
+      }
+    },
+    "/loginenterprise/{id}": {
+      "get": {
+        "tags": ["login enterprises"],
+        "summary": "Obter login por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login retornado",
+            "schema": {
+              "$ref": "#/definitions/LoginEnterprise"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["login enterprises"],
+        "summary": "Atualizar login",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginEnterprise"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login atualizado",
+            "schema": {
+              "$ref": "#/definitions/LoginEnterprise"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["login enterprises"],
+        "summary": "Deletar login",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login deletado"
+          }
+        }
+      }
+    },
     "/login": {
       "post": {
         "tags": ["Login"],
@@ -229,6 +335,113 @@
           }
         }
       }
+    },
+  
+  "/enterprise": {
+      "get": {
+        "tags": ["Enterprise"],
+        "summary": "Obter todas as empresas",
+        "responses": {
+          "200": {
+            "description": "Lista de empresas",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Enterprise"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Enterprise"],
+        "summary": "Criar um nova empresa",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Enterprise"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Empresa criada",
+            "schema": {
+              "$ref": "#/definitions/Enterprise"
+            }
+          }
+        }
+      }
+    },
+    "/enterprise/{id}": {
+      "get": {
+        "tags": ["Enterprise"],
+        "summary": "Obter empresa por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Empresa retornada",
+            "schema": {
+              "$ref": "#/definitions/Enterprise"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Enterprise"],
+        "summary": "Atualizar empresa",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Enterprise"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Empresa atualizada",
+            "schema": {
+              "$ref": "#/definitions/Enterprise"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Enterprise"],
+        "summary": "Deletar empresa",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Empresa deletada"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -271,6 +484,70 @@
           "type": "string"
         }
       }
+    },
+
+    "LoginEnterprise": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+
+    "Enterprise": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "id_login": {
+          "type": "integer"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "cep": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "complement": {
+          "type": "string"
+        },
+        "cnpj": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        }
+      }
     }
+
   }
 }

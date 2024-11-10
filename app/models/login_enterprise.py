@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String
 
+
 def get_db():
     from app import db  # Importa db somente quando necessário
     return db
@@ -11,8 +12,8 @@ class LoginEnterprise(get_db().Model):
     username = get_db().Column(get_db().String(50), nullable=False, unique=True)
     password = get_db().Column(get_db().String(50), nullable=False, unique=True)
     email = get_db().Column(get_db().String(100), unique=True, nullable=False)
-    user = get_db().relationship('Enterprise', backref='login_enterprise', uselist=False)    # Relacionamento com User (uselist=False garante relacionamento um-para-um)
-
+    # enterprise = get_db().relationship('Enterprise', uselist=False)    # Relacionamento com User (uselist=False garante relacionamento um-para-um)
+  # Relacionamento com User (uselist=False garante relacionamento um-para-um)
     def __init__(self, username, password, email):
         self.username = username
         self.password = password
