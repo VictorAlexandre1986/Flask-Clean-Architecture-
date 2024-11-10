@@ -11,7 +11,7 @@
   <li>SQLite></li>
 </ul>
 
-## Obs: Não use o alembic para migrar o banco de dados, use o flask-migrate.
+## Obs: Use o flask-migrate para migrar o banco de dados.
 
 ## Para criar um ambiente virtual digite:
 ```
