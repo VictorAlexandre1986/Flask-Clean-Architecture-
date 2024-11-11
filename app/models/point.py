@@ -15,6 +15,7 @@ class Point(get_db().Model):
     photo = get_db().Column(get_db().String(100), nullable=True)
     id_user = get_db().Column(get_db().Integer, get_db().ForeignKey('user.id'), nullable=False)
     total_hours = get_db().Column(get_db().Float, nullable=False)
+    pause = get_db().Column(get_db().Boolean, nullable=False, default=False)
 
     # Relacionamento com User
     user = get_db().relationship('User', backref='points')  # 'points' é o plural para relacionamento
@@ -24,6 +25,7 @@ class Point(get_db().Model):
         self.photo = photo
         self.id_user = id_user
         self.total_hours = total_hours
+        self.pause = False
 
     def __repr__(self):
-        return f'<Id User {self.id_user} Date {self.date} Photo {self.photo} Total Hours {self.total_hours}>'
+        return f'<Id User {self.id_user} Date {self.date} Photo {self.photo} Total Hours {self.total_hours} Pause {self.pause}>'
